@@ -5,14 +5,27 @@
 // Daje! :slightly_smiling_face:
 
 
+/* Migliorie future
+- validazione input utente
+
+*/
+
+// FUNZIONI ********************************************************************
+// Stampa tutte le proprietà di un oggetto
 function printObject(object){
   for (var key in object) {
     console.log(key + ' : ' + object[key]);
   }
 }
-
+// /FUNZIONI ********************************************************************
 
 // Oggetto studente
+var studenteVuoto = {
+  'nome' : 'Franco',
+  'cognome' : 'Franchi',
+  'eta' : '58',
+}
+
 var studente1 = {
   'nome' : 'Franco',
   'cognome' : 'Franchi',
@@ -40,9 +53,10 @@ var studente4 = {
 // Stampa oggetto
 console.log('PARTE 1 - STUDENTE SINGOLO *************************************');
 printObject(studente1);
-
-
 console.log(''); //Riga vuota
+
+
+
 console.log('PARTE 2 - ARRAY DI STUDENTI ************************************');
 // Array di studenti
 var studenti = [];
@@ -53,10 +67,31 @@ studenti.push(studente2);
 studenti.push(studente3);
 studenti.push(studente4);
 
-// Stampa dati di tutti gli studenti
+// Stampa nome e cognome di tutti gli studenti
 for (var i = 0; i < studenti.length; i++) {
   for (var prop in studenti[i]) {
-    console.log(prop + ' : ' + studenti[i][prop]);
+    if (prop === 'nome' || prop === 'cognome'){
+      console.log(prop + ' : ' + studenti[i][prop]);
+    }
   }
   console.log(''); //Riga vuota
 }
+console.log(''); //Riga vuota
+
+
+
+console.log('PARTE 3 - INSERIMENTO NUOVO UTENTE *******************************');
+
+var studenteAppo = studenteVuoto;
+
+for (var p in studenteAppo) {
+  studenteAppo[p] = prompt('Inserisci ' + p + ' dell \'utente:');
+}
+
+//Aggiungi studente creato all'array
+studenti.push(studenteAppo);
+
+console.log('Ultimo utente inserito');
+
+// Stampa a video ultimo utente inserito
+printObject(studenti[4]);
